@@ -20,15 +20,85 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 ///
-/// @ref core
-/// @file glm/integer.hpp
-/// @date 2013-12-24 / 2013-12-24
+/// @ref gtx_integer
+/// @file glm/gtx/integer.hpp
+/// @date 2005-12-24 / 2011-10-13
 /// @author Christophe Riccio
+///
+/// @see core (dependence)
+///
+/// @defgroup gtx_integer GLM_GTX_integer
+/// @ingroup gtx
+/// 
+/// @brief Add support for integer for core functions
+/// 
+/// <glm/gtx/integer.hpp> need to be included to use these functionalities.
 ///////////////////////////////////////////////////////////////////////////////////
 
-#ifndef GLM_INTEGER_INCLUDED
-#define GLM_INTEGER_INCLUDED
+#ifndef GLM_GTX_integer
+#define GLM_GTX_integer
 
-#include "detail/func_integer.hpp"
+// Dependency:
+#include "../glm.hpp"
 
-#endif//GLM_INTEGER_INCLUDED
+#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#	pragma message("GLM: GLM_GTX_integer extension included")
+#endif
+
+namespace glm
+{
+	/// @addtogroup gtx_integer
+	/// @{
+
+	//! Returns x raised to the y power. 
+	//! From GLM_GTX_integer extension.
+	int pow(int x, int y);
+
+	//! Returns the positive square root of x.
+	//! From GLM_GTX_integer extension.
+	int sqrt(int x);
+
+	//! Returns the log2 of x. Can be reliably using to compute mipmap count from the texture size.
+	//! From GLM_GTX_integer extension.
+	template <typename genIUType>
+	genIUType log2(genIUType x);
+
+	//! Returns the floor log2 of x.
+	//! From GLM_GTX_integer extension.
+	unsigned int floor_log2(unsigned int x);
+
+	//! Modulus. Returns x - y * floor(x / y) for each component in x using the floating point value y.
+	//! From GLM_GTX_integer extension.
+	int mod(int x, int y);
+
+	//! Return the factorial value of a number (!12 max, integer only)
+	//! From GLM_GTX_integer extension.
+	template <typename genType> 
+	genType factorial(genType const & x);
+
+	//! 32bit signed integer. 
+	//! From GLM_GTX_integer extension.
+	typedef signed int					sint;
+
+	//! Returns x raised to the y power.
+	//! From GLM_GTX_integer extension.
+	uint pow(uint x, uint y);
+
+	//! Returns the positive square root of x. 
+	//! From GLM_GTX_integer extension.
+	uint sqrt(uint x);
+
+	//! Modulus. Returns x - y * floor(x / y) for each component in x using the floating point value y.
+	//! From GLM_GTX_integer extension.
+	uint mod(uint x, uint y);
+
+	//! Returns the number of leading zeros.
+	//! From GLM_GTX_integer extension.
+	uint nlz(uint x);
+
+	/// @}
+}//namespace glm
+
+#include "integer.inl"
+
+#endif//GLM_GTX_integer
